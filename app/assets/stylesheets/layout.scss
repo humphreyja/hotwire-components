@@ -22,3 +22,9 @@ main {
 		opacity: 0.8;
 	}
 }
+
+turbo-frame[busy] {
+	&::before {
+		content: 'loading...';
+	}
+}
