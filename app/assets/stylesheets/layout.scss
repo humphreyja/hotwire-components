@@ -11,6 +11,12 @@ main {
 	padding: 10px;
 }
 
+section {
+	background: rgba(black, 0.05);
+	border-radius: 8px;
+	padding: 8px;
+}
+
 .text-primary {
 	color: #1e88f7;
 }
@@ -20,11 +26,5 @@ main {
 	transition: all 0.2s;
 	&:hover {
 		opacity: 0.8;
-	}
-}
-
-turbo-frame[busy] {
-	&::before {
-		content: 'loading...';
 	}
 }

@@ -1,13 +1,19 @@
 <%= turbo_frame_tag "calendar" do %>
 	<section class="hotwire-calendar">
 		<form>
-			<h1>This is a form with a server rendered datepicker in it</h1>
+			<h3 style="margin: 0">
+				Server Rendered Datepicker
+				<a style="font-size: 0.9rem" target="_blank" href="https://gist.github.com/humphreyja/6d87a1cbbbb29c8be3c54924b45b3c2a">Github Gist</a>
+			</h3>
+			
+			<p style="margin-bottom: 0">Click on the date below to change it. If you inspect, you will also see a hidden element value change</p>
+			
 	
 			<% my_selected_date = DateTime.now %>
 			<details data-controller="popup input_calendar" data-action="toggle->popup#update click@window->popup#closeOnClickOutside">
 			  <summary data-action="toggle->popup#update">
-					<h4>Selected Date (click to change)</h4>
-			    <p data-input_calendar-target="label" class="text-primary clickable"><%= my_selected_date.strftime("%Y-%m-%d") %></p>
+					<h5 style="margin-bottom: 2px">Selected Date (click to change)</h5>
+			    <p style="margin: 0;" data-input_calendar-target="label" class="text-primary clickable"><%= my_selected_date.strftime("%Y-%m-%d") %></p>
 			    <%= link_to 'Select Date', calendar_interface_path(selected: my_selected_date.to_date, target: 'MYFORM'), 'data-turbo-frame': 'calendar_interface_MYFORM', 'data-popup-target': 'link', 'data-input_calendar-target': 'link' %>
 			  </summary>
 				<input type="hidden" value="<%= my_selected_date.strftime("%Y-%m-%d") %>" data-input_calendar-target="input">
