@@ -1,0 +1,125 @@
+$day-width: 40px;
+$day-height: 40px;
+$popup-bg-color: #333;
+$popup-text-color: white;
+
+.hotwire-calendar {
+	.calendar {
+	  text-align: center;
+
+	  header {
+	    display: flex;
+	    flex-direction: row;
+	    justify-content: space-between;
+	    padding: 5px 0;
+			
+			svg { color: inherit; }
+
+	    h4 {
+	      font-size: 16px;
+	      white-space: nowrap;
+				margin: 0;
+	    }
+
+	    ol {
+	      display: flex;
+	      flex-direction: row;
+	      opacity: 0.5;
+
+	      li {
+	        width: $day-width;
+	      }
+	    }
+
+	    a {
+	      padding: 0 5px;
+	      text-decoration: none;
+				color: inherit;
+
+	      svg {
+	        height: 20px;
+	      }
+	    }
+	  }
+
+	  ol {
+	    list-style: none;
+	    margin: 0;
+	    padding: 0;
+	  }
+
+	  & > ol ol {
+	    display: flex;
+	    flex-direction: row;
+
+	    li {
+	      width: $day-width;
+	      height: $day-height;
+	      display: flex;
+	      align-items: center;
+	      justify-content: center;
+	      cursor: pointer;
+	      transition: background-color 0.2s ease;
+	      text-shadow: 0px 1px rgba(0, 0, 0, 0.3);
+
+	      &:hover {
+	        background-color: rgba(white, 0.07);
+	      }
+
+	      &.selected {
+	        background-color: rgba(white, 0.2);
+	      }
+
+	      &.outside {
+	        opacity: 0.6;
+	        text-shadow: none;
+	      }
+
+	      &.today {
+	        position: relative;
+
+	        &::after {
+	          position: absolute;
+	          content: '•';
+	          top: -1px;
+	          font-size: 10px;
+	        }
+	      }
+	    }
+	  }
+	}
+
+	details[data-controller~="popup"] {
+	  position: relative;
+	  outline: none;
+	  z-index: 10;
+
+	  a[data-popup-target~="link"] { 
+	    display: none; 
+	  }
+
+	  summary {
+	    list-style: none;
+	    outline: none;
+	    user-select: none;
+    
+	    &::-webkit-details-marker { display: none; }
+	  }
+ 
+	  .popup-menu {
+	    margin-top: 4px;
+	    margin-bottom: 4px;
+	    position: absolute;
+	    background: $popup-bg-color;
+	    color: $popup-text-color;
+	    box-shadow: 0 0 42px -10px rgba(black, 0.43);
+	    padding: 8px 12px;
+	    min-width: 100px;
+	    font-size: 16px;
+			border-radius: 8px;
+			
+	    &.right { right: 0 }
+	    &.left { left: 0 }
+	  }
+	}
+}
